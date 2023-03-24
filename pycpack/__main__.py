@@ -24,9 +24,18 @@ def _start() -> None:
 
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("source", type=_existing_path)
-    parser.add_argument("destination", type=Path)
-    parser.add_argument("--optimization", type=int, choices=[0, 1, 2], default=2)
+    parser.add_argument(
+        "source",
+        type=_existing_path, help="Source directory, usually the root of a Python project"
+    )
+    parser.add_argument(
+        "destination",
+        type=Path, help="Destination directory for bytecode files"
+    )
+    parser.add_argument(
+        "--optimization",
+        type=int, choices=[0, 1, 2], default=2, help="Bytecode optimization level (see `builtins.compile`)"
+    )
     return parser.parse_args()
 
 

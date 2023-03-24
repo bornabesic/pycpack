@@ -7,6 +7,7 @@ import pycpack
 
 TESTS_DIR = Path(__file__).parent
 
+
 class TestMain(unittest.TestCase):
 
     def test_compile(self):
