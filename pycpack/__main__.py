@@ -33,7 +33,7 @@ def _parse_args() -> argparse.Namespace:
         type=Path, help="Destination directory for bytecode files"
     )
     parser.add_argument(
-        "--optimization",
+        "-O", "--optimization",
         type=int, choices=[0, 1, 2], default=2, help="Bytecode optimization level (see `builtins.compile`)"
     )
     return parser.parse_args()
