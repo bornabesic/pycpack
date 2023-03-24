@@ -1,3 +1,5 @@
-*.egg.info/
+*.egg-info/
 .idea/
 .vscode/
+__pycache__/
+*.pyc
