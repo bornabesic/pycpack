@@ -8,7 +8,7 @@ from . import pycpack
 
 def main(args: argparse.Namespace) -> int:
     try:
-        file_count = pycpack.process_root(args.root, args.optimization)
+        file_count = pycpack.compile_directory_tree(args.source, args.destination, args.optimization)
         print(f"{file_count} Python file(s) have been compiled to bytecode.")
     except Exception as e:
         print(f"ERROR: {e}")
@@ -23,12 +23,13 @@ def _start() -> None:
 
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("root", type=_exiting_file)
+    parser.add_argument("source", type=_existing_path)
+    parser.add_argument("destination", type=Path)
     parser.add_argument("--optimization", type=int, choices=[0, 1, 2], default=2)
     return parser.parse_args()
 
 
-def _exiting_file(path: str) -> Path:
+def _existing_path(path: str) -> Path:
     path = Path(path)
     if not path.exists():
         raise argparse.ArgumentTypeError(f"File or directory '{path}' does not exist.")
