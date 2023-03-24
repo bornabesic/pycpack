@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import List
 
 
-def compile_directory_tree(source: Path, destination: Path, optimization: int) -> int:
+def compile_directory_tree(source: Path, destination: Path, optimization: int = -1) -> int:
     paths: List[Path]
     if source.is_dir():
         paths = [path for path in source.rglob("*.py") if path.is_file()]
