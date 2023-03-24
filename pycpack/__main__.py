@@ -15,6 +15,7 @@ def main(args: argparse.Namespace) -> int:
         return 1
     return 0
 
+
 def _start() -> None:
     args = _parse_args()
     status = main(args)
